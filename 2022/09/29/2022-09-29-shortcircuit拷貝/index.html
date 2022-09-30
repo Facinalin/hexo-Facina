@@ -1,153 +1,214 @@
 <!DOCTYPE html>
-<html lang="zh_TW">
-  <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html>
+<head>
+  <meta charset="utf-8">
 
-    <meta name="author" content="Facina Lin">
-
-
-
-
-
-
-
-<title>Shortcircuit Evaluation短路求值 | Who Knows 儲藏室</title>
-
-
-
-    <link rel="icon" href="/hexo-Facina/favicon.ico">
-
-
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
-</style>
-
-
-
-    <!-- stylesheets list from _config.yml -->
+  <!-- PACE Progress Bar START -->
+  
     
-    <link rel="stylesheet" href="/hexo-Facina/css/style.css">
+<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+
     
-
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/hexo-Facina/js/frame.js"></script>
-    
-
-
-
-
-
-
-
-
-
-
-  <meta name="generator" content="Hexo 6.3.0"></head>
-  <body>
-    <div class="mask-border">
-    </div>
-
-    <div class="wrapper">
-
-      <div class="header">
-  <div class="flex-container">
-    <div class="header-inner">
-      <div class="site-brand-container">
-        <a href="/hexo-Facina/">
-          
-            Frame.
-          
-        </a>
-      </div>
-      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
-        Menu
-      </div>
-      <nav class="site-nav">
-        <ul class="menu-list">
-          
-            
-              <li class="menu-item">
-                <a href="/hexo-Facina/">Home</a>
-              </li> 
-                   
-          
-            
-              <li class="menu-item">
-                <a href="/hexo-Facina/archives/">Archive</a>
-              </li> 
-                   
-          
-            
-              <li class="menu-item">
-                <a href="/hexo-Facina/categories/gallery/">Gallery</a>
-              </li> 
-                   
-          
-          
-        </ul>
-      </nav>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main">
-        <div class="flex-container">
-          <article id="post">
+<link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
 
   
-    <div class="post-head">
-    <div class="post-info">
-        <div class="tag-list">
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>shortcircuit evaluation短路求值 | Who Knows 儲藏室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Javascript前端技術筆記網頁設計" />
+  
+  
+  
+  
+  <meta name="description" content="Shortcircuit Evaluation 短路求值-高級寫法（？）來了，短路求值。聽起來就很快。（？） 現在我們有個唱片行的資料，老闆為了進銷存每個唱片都會編號。實際情境需求：因應唱片會有售出情形，編號可以重複使用，但裡面的資料已經不同，故需新增資料或更新唱片資料。不過因為曲目方面的清單小助手還在整理，所以有些編號的專輯不會有收錄曲目。 示範物件： 123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shortcircuit Evaluation短路求值">
+<meta property="og:url" content="http://example.com/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/index.html">
+<meta property="og:site_name" content="Who Knows 儲藏室">
+<meta property="og:description" content="Shortcircuit Evaluation 短路求值-高級寫法（？）來了，短路求值。聽起來就很快。（？） 現在我們有個唱片行的資料，老闆為了進銷存每個唱片都會編號。實際情境需求：因應唱片會有售出情形，編號可以重複使用，但裡面的資料已經不同，故需新增資料或更新唱片資料。不過因為曲目方面的清單小助手還在整理，所以有些編號的專輯不會有收錄曲目。 示範物件： 123456789101112131415">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-09-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-29T14:46:46.384Z">
+<meta property="article:author" content="Facina Lin">
+<meta property="article:tag" content="Javascript">
+<meta property="article:tag" content="前端技術筆記">
+<meta property="article:tag" content="網頁設計">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Who Knows 儲藏室" type="application/atom+xml">
+  
+  <link rel="icon" href="/hexo-Facina/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/hexo-Facina/css/style.css">
+
+
+  
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="/hexo-Facina/css/hiero.css" >
+  <link rel="stylesheet" href="/hexo-Facina/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/hexo-Facina/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/hexo-Facina/css/my.css">
+
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/hexo-Facina/"] = "Home"; 
+
+  themeMenus["/hexo-Facina/archives"] = "Archives"; 
+
+  themeMenus["/hexo-Facina/categories"] = "Categories"; 
+
+  themeMenus["/hexo-Facina/tags"] = "Tags"; 
+
+  themeMenus["/hexo-Facina/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
             
-                
-                    <span class="post-tag">
-                        <a href="/hexo-Facina/tags/Javascript/">
-                            Javascript
-                        </a>
-                    </span>    
-                
-                    <span class="post-tag">
-                        <a href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/">
-                            前端技術筆記
-                        </a>
-                    </span>    
-                
-                    <span class="post-tag">
-                        <a href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/">
-                            網頁設計
-                        </a>
-                    </span>    
-                           
+              <a href="/hexo-Facina/" title="Who Knows 儲藏室" rel="home"> Who Knows 儲藏室 </a>
             
-        </div>
-        <div class="post-title">
+          </h1>
+
+          
             
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/hexo-Facina/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
             
-                Shortcircuit Evaluation短路求值
-            
-            
-        </div>
-        <span class="post-date">
-            9月 29, 2022
-        </span>
-    </div>
-    <div class="post-img">
+      <div id="content" class="outer">
         
-            <div class="h-line-primary"></div>
-              
+          <section id="main" style="float:none;"><article id="post-2022-09-29-shortcircuit拷貝" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Shortcircuit Evaluation短路求值
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/hexo-Facina/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/" class="article-date">
+	  <time datetime="2022-09-28T16:00:00.000Z" itemprop="datePublished">九月 29, 2022</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
-</div>
-    <div class="post-content">
-    <h3 id="Shortcircuit-Evaluation-短路求值-高級寫法（？）"><a href="#Shortcircuit-Evaluation-短路求值-高級寫法（？）" class="headerlink" title="Shortcircuit Evaluation 短路求值-高級寫法（？）"></a>Shortcircuit Evaluation 短路求值-高級寫法（？）</h3><p>來了，短路求值。聽起來就很快。（？）</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Shortcircuit-Evaluation-短路求值-高級寫法（？）"><a href="#Shortcircuit-Evaluation-短路求值-高級寫法（？）" class="headerlink" title="Shortcircuit Evaluation 短路求值-高級寫法（？）"></a>Shortcircuit Evaluation 短路求值-高級寫法（？）</h3><p>來了，短路求值。聽起來就很快。（？）</p>
 <p>現在我們有個唱片行的資料，老闆為了進銷存每個唱片都會編號。實際情境需求：因應唱片會有售出情形，編號可以重複使用，但裡面的資料已經不同，故需新增資料或更新唱片資料。不過因為曲目方面的清單小助手還在整理，所以有些編號的專輯不會有收錄曲目。</p>
 <p>示範物件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const recordCollection = &#123;</span><br><span class="line">  2548: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;Slippery When Wet&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Bon Jovi&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;Let It Rock&#x27;</span>, <span class="string">&#x27;You Give Love a Bad Name&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  2468: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;1999&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Prince&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;1999&#x27;</span>, <span class="string">&#x27;Little Red Corvette&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  1245: &#123;</span><br><span class="line">    artist: <span class="string">&#x27;Robert Palmer&#x27;</span>,</span><br><span class="line">    tracks: []</span><br><span class="line">  &#125;,</span><br><span class="line">  5439: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;ABBA Gold&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -162,65 +223,217 @@
 <p>** 第三種寫法：（變數款）</p>
 <p>變數真的是一個超級靈活的工具。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> updateRecords(records, <span class="built_in">id</span>, prop, value) &#123;</span><br><span class="line"></span><br><span class="line">  const album = records[<span class="built_in">id</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (value === <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    delete album[prop];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (prop !== <span class="string">&quot;tracks&quot;</span>) &#123;</span><br><span class="line">    album[prop] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    album[<span class="string">&quot;tracks&quot;</span>] = album[<span class="string">&quot;tracks&quot;</span>] || [];</span><br><span class="line">    album[<span class="string">&quot;tracks&quot;</span>].push(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> records;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</div> 
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+
+<script src="/hexo-Facina/js/vdonate.js"></script>
 
 <script>
-    window.onload = detectors();
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
 </script>
-    <div class="post-footer">
-    <div class="h-line-primary"></div>
-    <nav class="post-nav">
-        <div class="prev-item">
-           
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/">Prev</a>
-                </div>
+      
             
-        </div>
-        <div class="next-item">
-            
-                <div class="icon arrow-right"></div>
-                <div class="post-link">
-                  <a href="/hexo-Facina/2022/09/27/2022-09-27-boolean/">Next</a>  
-                </div>  
-            
-        </div>
-    </nav>
-</div>
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
 
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
     
-      <div class="post-comment">
+<nav id="article-nav">
+  
+    <a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Object物件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/hexo-Facina/2022/09/27/2022-09-27-boolean/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Boolean布林</div>
+    </a>
+  
+</nav>
 
-     
-
-     
-    
-    
-
-</div>
-     
   
 </article>
-        </div>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shortcircuit-Evaluation-%E7%9F%AD%E8%B7%AF%E6%B1%82%E5%80%BC-%E9%AB%98%E7%B4%9A%E5%AF%AB%E6%B3%95%EF%BC%88%EF%BC%9F%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Shortcircuit Evaluation 短路求值-高級寫法（？）</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
       </div>
-      
-      <div class="footer">
-    <div class="flex-container">
-        <div class="footer-text">
-            
-            
-            
-                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
-                
-        </div>
-    </div>
-</div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2022 Who Knows 儲藏室 All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/hexo-Facina/js/my.js"></script>
 
     </div>
-
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/hexo-Facina/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo-Facina/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/hexo-Facina/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/hexo-Facina/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/hexo-Facina/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
     
-    
 
-  </body>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/hexo-Facina/js/scripts.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script src="/hexo-Facina/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>
