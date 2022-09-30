@@ -14,10 +14,10 @@
 <meta property="article:author" content="Facina Lin">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Who Knows 儲藏室" type="application/atom+xml">
+    <link rel="alternate" href="/hexo-Facina/atom.xml" title="Who Knows 儲藏室" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/hexo-Facina/favicon.png">
   
   
     
@@ -25,11 +25,11 @@
 
   
   
-<link rel="stylesheet" href="../../../../css/style.css">
+<link rel="stylesheet" href="/hexo-Facina/css/style.css">
 
   
     
-<link rel="stylesheet" href="../../../../fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/hexo-Facina/fancybox/jquery.fancybox.min.css">
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
@@ -42,7 +42,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="index.html" id="logo">Who Knows 儲藏室</a>
+        <a href="/hexo-Facina/" id="logo">Who Knows 儲藏室</a>
       </h1>
       
     </div>
@@ -50,14 +50,14 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="index.html">Home</a>
+          <a class="main-nav-link" href="/hexo-Facina/">Home</a>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          <a class="main-nav-link" href="/hexo-Facina/archives">Archives</a>
         
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/hexo-Facina/atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
@@ -71,9 +71,138 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2022-09-29-Object拷貝" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/" class="article-date">
+  <time class="dt-published" datetime="2022-09-28T16:00:00.000Z" itemprop="datePublished">2022-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/">Object物件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Object-物件"><a href="#Object-物件" class="headerlink" title="Object 物件"></a>Object 物件</h3><p>物件 &#x3D; 屬性property + 對應屬性的資料。</p>
+<p>如果你的物件有非字串的屬性，javascript會將其自動轉換為字串。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>現在我想要從長長的物件中取出資料。<br>屬性就像是編號，找到編號後服務人員幫你把其中的物品取出交給你。</p>
+<p>如果你已知屬性的名稱，則可以快速使用.property方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const myBandlegs = myBand.legs;</span><br></pre></td></tr></table></figure>
+
+<p>如果你已知屬性的名稱，但屬性的名稱有點長，中間有個空格，則需使用[ ]方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>],</span><br><span class="line">  <span class="string">&quot;Annual Award&quot;</span>:<span class="string">&quot;2022MAMA&quot;</span></span><br><span class="line"></span><br><span class="line">const myBandAwards = myBand[<span class="string">&quot;Annual Award&quot;</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>變化型：當物件的屬性是個變數時（不知道是否有空白等等的），一樣需使用[ ]。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>],</span><br><span class="line">  <span class="string">&quot;Annual Award&quot;</span>:<span class="string">&quot;2022MAMA&quot;</span></span><br><span class="line"></span><br><span class="line">const fds = <span class="string">&quot;friends&quot;</span>;</span><br><span class="line">const myBandFriends = myBand[fds];</span><br><span class="line"></span><br><span class="line">console.log(myBandFriends);</span><br></pre></td></tr></table></figure>
+
+<p>既然有了物件的寫法，當選項過多的時候就不用使用If&#x2F; Else或case&#x2F;switch statement囉：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> phoneticLookup(val) &#123;</span><br><span class="line">  <span class="built_in">let</span> result = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  const lookup = &#123;</span><br><span class="line">    <span class="string">&quot;Hank&quot;</span>:<span class="string">&quot;Shrader&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Jesse&quot;</span>:<span class="string">&quot;Pinkman&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Walter&quot;</span>:<span class="string">&quot;White&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mike&quot;</span>:<span class="string">&quot;Ehrmantraut&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Gustavo&quot;</span>:<span class="string">&quot;Fring&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Tuco&quot;</span>:<span class="string">&quot;Salamanca&quot;</span></span><br><span class="line">  &#125;;</span><br><span class="line">   const value = val;</span><br><span class="line">   result = lookup[value];</span><br><span class="line">  <span class="built_in">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">phoneticLookup(<span class="string">&quot;Walter&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="更改物件屬性對應的值or增加屬性（與其值）"><a href="#更改物件屬性對應的值or增加屬性（與其值）" class="headerlink" title="更改物件屬性對應的值or增加屬性（與其值）"></a>更改物件屬性對應的值or增加屬性（與其值）</h3><p>這兩個行為的寫法都是一樣的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>],</span><br><span class="line">  <span class="string">&quot;Annual Award&quot;</span>:<span class="string">&quot;2022MAMA&quot;</span></span><br><span class="line"></span><br><span class="line">myBand.name = <span class="string">&quot;Changbin&quot;</span>;</span><br><span class="line"></span><br><span class="line">myBand[<span class="string">&quot;legs&quot;</span>] = 5;</span><br></pre></td></tr></table></figure>
+
+<h3 id="刪除物件屬性對應的值"><a href="#刪除物件屬性對應的值" class="headerlink" title="刪除物件屬性對應的值"></a>刪除物件屬性對應的值</h3><p>非常直白。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const myBand = &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>:<span class="string">&quot;Seungmin&quot;</span>,</span><br><span class="line">  <span class="string">&quot;legs&quot;</span>:4,</span><br><span class="line">  <span class="string">&quot;tails&quot;</span>:1,</span><br><span class="line">  <span class="string">&quot;friends&quot;</span>:[<span class="string">&quot;Leeknow&quot;</span>,<span class="string">&quot;Bangchan&quot;</span>],</span><br><span class="line">  <span class="string">&quot;Annual Award&quot;</span>:<span class="string">&quot;2022MAMA&quot;</span></span><br><span class="line"></span><br><span class="line">delete myBand.legs;</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢查該物件是否有該屬性"><a href="#檢查該物件是否有該屬性" class="headerlink" title="檢查該物件是否有該屬性"></a>檢查該物件是否有該屬性</h3><p>回傳布林值的方法：.hasOwnProperty(屬性名稱)</p>
+<p>因為回傳的是布林，所以我們直接寫一個if statement的function更快：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> checkObj(obj, checkProp) &#123;</span><br><span class="line">  <span class="keyword">if</span> (obj.hasOwnProperty(checkProp))&#123;</span><br><span class="line">    <span class="built_in">return</span> obj[checkProp];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">return</span> <span class="string">&quot;Not Found&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="複雜的物件"><a href="#複雜的物件" class="headerlink" title="複雜的物件"></a>複雜的物件</h3><p>物件之所以複雜是因為物件裡面可以包的東西很多，不像字串只能包字，布林只有兩種可能。</p>
+<p>可以包涵：strings, numbers, booleans, arrays, functions, 以及 objects.</p>
+<h3 id="複雜的物件取值（超過兩層以上）"><a href="#複雜的物件取值（超過兩層以上）" class="headerlink" title="複雜的物件取值（超過兩層以上）"></a>複雜的物件取值（超過兩層以上）</h3><p>目標：取到maps這個值。</p>
+<p>分解-&gt; 我要先進入第一層car，第二層inside，最後一層glove box才取得到值。（與多層陣列取值同原理。）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const myStorage = &#123;</span><br><span class="line">  <span class="string">&quot;car&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;inside&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;glove box&quot;</span>: <span class="string">&quot;maps&quot;</span>,</span><br><span class="line">      <span class="string">&quot;passenger seat&quot;</span>: <span class="string">&quot;crumbs&quot;</span></span><br><span class="line">     &#125;,</span><br><span class="line">    <span class="string">&quot;outside&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;trunk&quot;</span>: <span class="string">&quot;jack&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const gloveBoxContents = myStorage.car.inside[<span class="string">&quot;glove box&quot;</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="物件組合技"><a href="#物件組合技" class="headerlink" title="物件組合技"></a>物件組合技</h3><p>現在我們手上有一個唱片資料，綜合各種陣列跟物件的方法取值&#x2F; 判定是否有屬性&#x2F; 新增陣列等等的方法才能完成的函式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">const recordCollection = &#123;</span><br><span class="line">  2548: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;Slippery When Wet&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Bon Jovi&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;Let It Rock&#x27;</span>, <span class="string">&#x27;You Give Love a Bad Name&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  2468: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;1999&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Prince&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;1999&#x27;</span>, <span class="string">&#x27;Little Red Corvette&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  1245: &#123;</span><br><span class="line">    artist: <span class="string">&#x27;Robert Palmer&#x27;</span>,</span><br><span class="line">    tracks: []</span><br><span class="line">  &#125;,</span><br><span class="line">  5439: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;ABBA Gold&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//中文處僅為說明</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> updateRecords(records現有的物件資料組, <span class="built_in">id</span>資料單位的編號, prop屬性如artist/tracks和albumTitle, value屬性資料組的值) &#123;</span><br><span class="line">  <span class="keyword">if</span>(prop!==<span class="string">&quot;tracks&quot;</span> &amp;&amp; value !==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop]= value;</span><br><span class="line"></span><br><span class="line">    //如果輸入的prop不是<span class="string">&quot;tracks&quot;</span>（而是artist或albumTitle），且值不等於空字串時，用輸入的value覆蓋掉資料原本的值。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(prop=== <span class="string">&quot;tracks&quot;</span> &amp;&amp; records[<span class="built_in">id</span>].hasOwnProperty(<span class="string">&quot;tracks&quot;</span>)=== <span class="literal">false</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop]= [value];</span><br><span class="line"></span><br><span class="line">    //如果輸入的prop是<span class="string">&quot;tracks&quot;</span>，且該資料組尚未含有tracks這個prop時，為其新增一個名為tracks的陣列並把輸入的value送進去。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(prop=== <span class="string">&quot;tracks&quot;</span> &amp;&amp; value !==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop].push(value);</span><br><span class="line"></span><br><span class="line">     //如果輸入的prop是<span class="string">&quot;tracks&quot;</span>，且其值不為空字串時（代表該資料組已有tracks這個prop），從陣列的最尾端推輸入的value進去。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    delete records[<span class="built_in">id</span>][prop]</span><br><span class="line"></span><br><span class="line">    //如果其輸入value為空字串時，直接刪除該屬性。（順便整理資料）//</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> records;</span><br><span class="line"></span><br><span class="line">  //最後回傳更新過的物件。//</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">updateRecords(recordCollection, 5439, <span class="string">&#x27;artist&#x27;</span>, <span class="string">&#x27;ABBA&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>¶ 資料來源：</p>
+<p>(1)類型轉換：<a href="htt">Freecodecamporg</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/" data-id="cl8nuoeea0008jz6ggi897rz3" data-title="Object物件" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2022-09-29-shortcircuit拷貝" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/hexo-Facina/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/" class="article-date">
+  <time class="dt-published" datetime="2022-09-28T16:00:00.000Z" itemprop="datePublished">2022-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/">Shortcircuit Evaluation短路求值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Shortcircuit-Evaluation-短路求值-高級寫法（？）"><a href="#Shortcircuit-Evaluation-短路求值-高級寫法（？）" class="headerlink" title="Shortcircuit Evaluation 短路求值-高級寫法（？）"></a>Shortcircuit Evaluation 短路求值-高級寫法（？）</h3><p>來了，短路求值。聽起來就很快。（？）</p>
+<p>現在我們有個唱片行的資料，老闆為了進銷存每個唱片都會編號。實際情境需求：因應唱片會有售出情形，編號可以重複使用，但裡面的資料已經不同，故需新增資料或更新唱片資料。不過因為曲目方面的清單小助手還在整理，所以有些編號的專輯不會有收錄曲目。</p>
+<p>示範物件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const recordCollection = &#123;</span><br><span class="line">  2548: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;Slippery When Wet&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Bon Jovi&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;Let It Rock&#x27;</span>, <span class="string">&#x27;You Give Love a Bad Name&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  2468: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;1999&#x27;</span>,</span><br><span class="line">    artist: <span class="string">&#x27;Prince&#x27;</span>,</span><br><span class="line">    tracks: [<span class="string">&#x27;1999&#x27;</span>, <span class="string">&#x27;Little Red Corvette&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  1245: &#123;</span><br><span class="line">    artist: <span class="string">&#x27;Robert Palmer&#x27;</span>,</span><br><span class="line">    tracks: []</span><br><span class="line">  &#125;,</span><br><span class="line">  5439: &#123;</span><br><span class="line">    albumTitle: <span class="string">&#x27;ABBA Gold&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>** 第一種寫法：（If&#x2F; Else if 基本款）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> updateRecords(records現有的物件資料組, <span class="built_in">id</span>資料單位的編號, prop屬性如artist/tracks和albumTitle, value屬性資料組的值) &#123;</span><br><span class="line">  <span class="keyword">if</span>(prop!==<span class="string">&quot;tracks&quot;</span> &amp;&amp; value !==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop]= value;</span><br><span class="line"></span><br><span class="line">    //如果輸入的prop不是<span class="string">&quot;tracks&quot;</span>（而是artist或albumTitle），且值不等於空字串時，用輸入的value覆蓋掉資料原本的值。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(prop=== <span class="string">&quot;tracks&quot;</span> &amp;&amp; records[<span class="built_in">id</span>].hasOwnProperty(<span class="string">&quot;tracks&quot;</span>)=== <span class="literal">false</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop]= [value];</span><br><span class="line"></span><br><span class="line">    //如果輸入的prop是<span class="string">&quot;tracks&quot;</span>，且該資料組尚未含有tracks這個prop時，為其新增一個名為tracks的陣列並把輸入的value送進去。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(prop=== <span class="string">&quot;tracks&quot;</span> &amp;&amp; value !==<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop].push(value);</span><br><span class="line"></span><br><span class="line">     //如果輸入的prop是<span class="string">&quot;tracks&quot;</span>，且其值不為空字串時（代表該資料組已有tracks這個prop），從陣列的最尾端推輸入的value進去。//</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    delete records[<span class="built_in">id</span>][prop]</span><br><span class="line"></span><br><span class="line">    //如果其輸入value為空字串時，直接刪除該屬性。（順便整理資料）//</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> records;</span><br><span class="line"></span><br><span class="line">  //最後回傳更新過的物件。//</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">updateRecords(recordCollection, 5439, <span class="string">&#x27;artist&#x27;</span>, <span class="string">&#x27;ABBA&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>** 第二種寫法：（短路求值款）</p>
+<p>剛開始還沒回過神來，看不懂第二區的短路求值在幹嘛，後來用了一個理解方式，發現超具象化，分享給各位。若以人的視角來說，先請二號小幫手看過一遍整體哪些專輯有track的紀錄，哪些沒有，有的話就先放著，沒有的話要多幫他用奇異筆畫上去一個空陣列[ ]。（當然這時候已經過濾掉沒有track資料的那些資料了）全部掃完一遍之後，便開始增加新曲目進去這個陣列（甚至請個三號小幫手來新增也沒差），理論上只要有畫陣列的都會有資料，不會忘記新增進去。計畫通：）</p>
+<p>有種家庭代工的既視感，一個人先掃完一部分，另一個人再負責填資料，比起兩個人個別一個一個填資料快多了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> updateRecords(records, <span class="built_in">id</span>, prop, value) &#123;</span><br><span class="line">  <span class="keyword">if</span> (value === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    delete records[<span class="built_in">id</span>][prop];</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (prop === <span class="string">&#x27;tracks&#x27;</span>) &#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop] = records[<span class="built_in">id</span>][prop] || []; </span><br><span class="line">    records[<span class="built_in">id</span>][prop].push(value);</span><br><span class="line"></span><br><span class="line">    //如果已有該prop的資料組，就回傳該陣列，無的話便為他新增一個空陣列。確認完後，整體一起新增值到陣列。</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    records[<span class="built_in">id</span>][prop] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">return</span> records;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>** 第三種寫法：（變數款）</p>
+<p>變數真的是一個超級靈活的工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> updateRecords(records, <span class="built_in">id</span>, prop, value) &#123;</span><br><span class="line"></span><br><span class="line">  const album = records[<span class="built_in">id</span>];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (value === <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">    delete album[prop];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (prop !== <span class="string">&quot;tracks&quot;</span>) &#123;</span><br><span class="line">    album[prop] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    album[<span class="string">&quot;tracks&quot;</span>] = album[<span class="string">&quot;tracks&quot;</span>] || [];</span><br><span class="line">    album[<span class="string">&quot;tracks&quot;</span>].push(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> records;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/" data-id="cl8nuoeeg000cjz6g01t05y84" data-title="Shortcircuit Evaluation短路求值" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2022-09-27-boolean" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/27/2022-09-27-boolean/" class="article-date">
+    <a href="/hexo-Facina/2022/09/27/2022-09-27-boolean/" class="article-date">
   <time class="dt-published" datetime="2022-09-26T16:00:00.000Z" itemprop="datePublished">2022-09-27</time>
 </a>
     
@@ -85,7 +214,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/27/2022-09-27-boolean/">Boolean布林</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/27/2022-09-27-boolean/">Boolean布林</a>
     </h1>
   
 
@@ -140,7 +269,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -152,7 +281,7 @@
   
     <article id="post-2022-09-24-js-function" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/24/2022-09-24-js-function/" class="article-date">
+    <a href="/hexo-Facina/2022/09/24/2022-09-24-js-function/" class="article-date">
   <time class="dt-published" datetime="2022-09-23T16:00:00.000Z" itemprop="datePublished">2022-09-24</time>
 </a>
     
@@ -164,7 +293,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/24/2022-09-24-js-function/">function函式</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/24/2022-09-24-js-function/">function函式</a>
     </h1>
   
 
@@ -199,7 +328,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -211,7 +340,7 @@
   
     <article id="post-2022-09-23-Array" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/23/2022-09-23-Array/" class="article-date">
+    <a href="/hexo-Facina/2022/09/23/2022-09-23-Array/" class="article-date">
   <time class="dt-published" datetime="2022-09-22T16:00:00.000Z" itemprop="datePublished">2022-09-23</time>
 </a>
     
@@ -223,7 +352,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/23/2022-09-23-Array/">Array陣列</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/23/2022-09-23-Array/">Array陣列</a>
     </h1>
   
 
@@ -288,7 +417,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -300,7 +429,7 @@
   
     <article id="post-2022-09-23-css-float" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/23/2022-09-23-css-float/" class="article-date">
+    <a href="/hexo-Facina/2022/09/23/2022-09-23-css-float/" class="article-date">
   <time class="dt-published" datetime="2022-09-22T16:00:00.000Z" itemprop="datePublished">2022-09-23</time>
 </a>
     
@@ -312,7 +441,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/23/2022-09-23-css-float/">CSS Float排版</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/23/2022-09-23-css-float/">CSS Float排版</a>
     </h1>
   
 
@@ -337,7 +466,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -349,7 +478,7 @@
   
     <article id="post-2022-09-22-js-calc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/22/2022-09-22-js-calc/" class="article-date">
+    <a href="/hexo-Facina/2022/09/22/2022-09-22-js-calc/" class="article-date">
   <time class="dt-published" datetime="2022-09-21T16:00:00.000Z" itemprop="datePublished">2022-09-22</time>
 </a>
     
@@ -361,7 +490,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/22/2022-09-22-js-calc/">變數計算feat算術運算/ 運算子們。</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/22/2022-09-22-js-calc/">變數計算feat算術運算/ 運算子們。</a>
     </h1>
   
 
@@ -437,7 +566,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -449,7 +578,7 @@
   
     <article id="post-2022-09-22-var" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/22/2022-09-22-var/" class="article-date">
+    <a href="/hexo-Facina/2022/09/22/2022-09-22-var/" class="article-date">
   <time class="dt-published" datetime="2022-09-21T16:00:00.000Z" itemprop="datePublished">2022-09-22</time>
 </a>
     
@@ -461,7 +590,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/22/2022-09-22-var/">Javascript變數</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/22/2022-09-22-var/">Javascript變數</a>
     </h1>
   
 
@@ -499,7 +628,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -511,7 +640,7 @@
   
     <article id="post-2022-09-22-string" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/22/2022-09-22-string/" class="article-date">
+    <a href="/hexo-Facina/2022/09/22/2022-09-22-string/" class="article-date">
   <time class="dt-published" datetime="2022-09-21T16:00:00.000Z" itemprop="datePublished">2022-09-22</time>
 </a>
     
@@ -523,7 +652,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/22/2022-09-22-string/">String 字串/ 樣板字面值。</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/22/2022-09-22-string/">String 字串/ 樣板字面值。</a>
     </h1>
   
 
@@ -600,7 +729,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -612,7 +741,7 @@
   
     <article id="post-2022-09-20-JS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="2022/09/20/2022-09-20-JS/" class="article-date">
+    <a href="/hexo-Facina/2022/09/20/2022-09-20-JS/" class="article-date">
   <time class="dt-published" datetime="2022-09-19T16:00:00.000Z" itemprop="datePublished">2022-09-20</time>
 </a>
     
@@ -624,7 +753,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="2022/09/20/2022-09-20-JS/">Javascript，初次見面。</a>
+      <a class="p-name article-title" href="/hexo-Facina/2022/09/20/2022-09-20-JS/">Javascript，初次見面。</a>
     </h1>
   
 
@@ -685,7 +814,7 @@
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
 
     </footer>
   </div>
@@ -708,7 +837,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
     </div>
   </div>
 
@@ -718,7 +847,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="tags/CSS/" style="font-size: 10px;">CSS</a> <a href="tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" style="font-size: 20px;">前端技術筆記</a> <a href="tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" style="font-size: 20px;">網頁設計</a>
+      <a href="/hexo-Facina/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/hexo-Facina/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" style="font-size: 20px;">前端技術筆記</a> <a href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" style="font-size: 20px;">網頁設計</a>
     </div>
   </div>
 
@@ -727,7 +856,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/09/">九月 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-Facina/archives/2022/09/">九月 2022</a></li></ul>
     </div>
   </div>
 
@@ -740,23 +869,23 @@
       <ul>
         
           <li>
-            <a href="2022/09/27/2022-09-27-boolean/">Boolean布林</a>
+            <a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/">Object物件</a>
           </li>
         
           <li>
-            <a href="2022/09/24/2022-09-24-js-function/">function函式</a>
+            <a href="/hexo-Facina/2022/09/29/2022-09-29-shortcircuit%E6%8B%B7%E8%B2%9D/">Shortcircuit Evaluation短路求值</a>
           </li>
         
           <li>
-            <a href="2022/09/23/2022-09-23-Array/">Array陣列</a>
+            <a href="/hexo-Facina/2022/09/27/2022-09-27-boolean/">Boolean布林</a>
           </li>
         
           <li>
-            <a href="2022/09/23/2022-09-23-css-float/">CSS Float排版</a>
+            <a href="/hexo-Facina/2022/09/24/2022-09-24-js-function/">function函式</a>
           </li>
         
           <li>
-            <a href="2022/09/22/2022-09-22-js-calc/">變數計算feat算術運算/ 運算子們。</a>
+            <a href="/hexo-Facina/2022/09/23/2022-09-23-Array/">Array陣列</a>
           </li>
         
       </ul>
@@ -781,25 +910,25 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="/hexo-Facina/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    <a href="/hexo-Facina/archives" class="mobile-nav-link">Archives</a>
   
 </nav>
     
 
 
-<script src="../../../../js/jquery-3.4.1.min.js"></script>
+<script src="/hexo-Facina/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="../../../../fancybox/jquery.fancybox.min.js"></script>
+<script src="/hexo-Facina/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
-<script src="../../../../js/script.js"></script>
+<script src="/hexo-Facina/js/script.js"></script>
 
 
 
