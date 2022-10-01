@@ -173,6 +173,84 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-2022-09-30-loop"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/hexo-Facina/2022/09/30/2022-09-30-loop/">Loop迴圈與Recursion遞迴</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/hexo-Facina/2022/09/30/2022-09-30-loop/" class="article-date">
+	  <time datetime="2022-09-29T16:00:00.000Z" itemprop="datePublished">九月 30, 2022</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Loop迴圈：工業化的好幫手"><a href="#Loop迴圈：工業化的好幫手" class="headerlink" title="Loop迴圈：工業化的好幫手"></a>Loop迴圈：工業化的好幫手</h2><p>同一個函式，讓電腦重複執行，便是迴圈。</p>
+<h3 id="While迴圈"><a href="#While迴圈" class="headerlink" title="While迴圈"></a>While迴圈</h3><p>目標：我想要創造一個陣列變數myArray，長這樣[5, 4, 3, 2, 1, 0]，但我不想要一個一個手打。</p>
+<p>這時候就可以利用一個基本款的while迴圈來協助：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const myArray = [];</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> i = 5;</span><br><span class="line"><span class="keyword">while</span> (i &gt; -1)&#123;</span><br><span class="line">  myArray.push(i);</span><br><span class="line">  i--;</span><br><span class="line"></span><br><span class="line">// 初始值i以5開始，當i大於-1之前都繼續執行此函式。函式就是push遞減的數字到陣列裡，以5開始，遇到0（大於-1）的時候結束這個迴圈。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="For迴圈"><a href="#For迴圈" class="headerlink" title="For迴圈"></a>For迴圈</h3><p>for迴圈的結構：（ initialization statement; condition statement; final expression）</p>
+<p>initialization statement：執行迴圈前會先執行一次。<br>condition statement：執行完為true的話才會執行迴圈，false的話則停止執行。<br>final expression：執行完一次迴圈後的觸發下次迴圈的行為。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const myArray = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 5; i &gt; -1; i--)&#123;</span><br><span class="line">  myArray.push(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>「因為孤獨的總和，讓我們相互依偎著＿＿」不是，現在我們要求的不是孤獨的總和，是陣列的總和。</p>
+<p>直接上一個for迴圈：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const myArr = [2, 3, 4, 5, 6];</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> total = 0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i=0; i&lt;myArr.length;i++)&#123;</span><br><span class="line">  total += myArr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>老實說total +&#x3D; myArr[i];這句真的滿不白話的，理解了好一下子。後來想到畫面了，第一次total執行完取值之後，total這個變數的值來到了2，因為跳下一個索引仍然未超出迴圈範圍，故陣列再次執行，這時候total已經是2，再加上遇到新來的3，total現在又來到了5。故最後total會來到陣列的總和。</p>
+<p>也有看到有人倒回來寫。恩，如果你有空的話。</p>
+<p>多層陣列的總和，使用for迴圈：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const arr = [</span><br><span class="line">  [1, 2], [3, 4], [5, 6]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> j = 0; j &lt; arr[i].length; j++) &#123;</span><br><span class="line">    console.log(arr[i][j]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>排列組合的概念。</p>
+<h3 id="Do-While迴圈"><a href="#Do-While迴圈" class="headerlink" title="Do While迴圈"></a>Do While迴圈</h3><p>是否有些情況需要先測試跑一次後，再開始迴圈的寫法？這時候就要用上Do While迴圈。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const ourArray = []; </span><br><span class="line"><span class="built_in">let</span> i = 5;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (i &lt; 5) &#123;</span><br><span class="line">  ourArray.push(i);</span><br><span class="line">  i++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 最後ourArray = []; </span><br></pre></td></tr></table></figure>
+<p>我們寫一個執行行為相同，但回傳結果不同的Do While迴圈。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const ourArray = []; </span><br><span class="line"><span class="built_in">let</span> i = 5;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  ourArray.push(i);</span><br><span class="line">  i++;</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; 5);</span><br><span class="line"></span><br><span class="line">// 最後ourArray = [5]; 因為<span class="keyword">do</span> <span class="keyword">while</span>迴圈讓他強制執行了初始的那一次。</span><br></pre></td></tr></table></figure>
+<p>因為我還沒實際用過這個迴圈，我在猜這個迴圈的實用性是：當你想確認到底是迴圈的哪個部分出錯的時候。do while有點像是幫你分開檢查的人員，當他回傳5的時候，你可以得到的資訊是：迴圈執行行為沒問題，是範圍出了問題。</p>
+<h3 id="Recursion遞迴"><a href="#Recursion遞迴" class="headerlink" title="Recursion遞迴"></a>Recursion遞迴</h3><p>遞迴 (Recursive) ：程式中包含自我呼叫 (self-calling)。</p>
+<p>如果無法第一次就理解遞迴的朋友們，建議複習一下歐幾里德的輾轉相除法的演示，會比較好理解。<br>（真的看了好多次都想說我看了什麼）</p>
+<p>來，直接附上一個我覺得說明跟圖解超清楚的教學影片：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=fGesPF3QA1U&ab_channel=Stepp%E5%AD%B8%E9%99%A2">歐幾里得演算法(輾轉相除法)</a></p>
+<p>遞迴必須包含一個base case。（通常為範圍的終點aka停止執行的條件。）base case寫在if中。</p>
+<p>接著，除了base case情況以外的情況會寫進else中。else的終點就是base case。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">co</span><br></pre></td></tr></table></figure>
+
+
+<p>¶ 資料來源：</p>
+<p>(1)Recursion遞迴：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10289379?sc=iThelpR">Day 11 Type Conversion與Type Coercion</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+    
+
+  
     <article id="post-2022-09-29-Object拷貝"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -895,98 +973,12 @@ var themeMenus = {};
     
 
   
-    <article id="post-2022-09-20-JS"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+
+
+  <nav id="page-nav">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/hexo-Facina/2022/09/20/2022-09-20-JS/">Javascript，初次見面。</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/hexo-Facina/2022/09/20/2022-09-20-JS/" class="article-date">
-	  <time datetime="2022-09-19T16:00:00.000Z" itemprop="datePublished">九月 20, 2022</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Javascript基礎中的基礎寫法"><a href="#Javascript基礎中的基礎寫法" class="headerlink" title="Javascript基礎中的基礎寫法"></a>Javascript基礎中的基礎寫法</h1><h3 id="評論（瀏覽器不編譯）"><a href="#評論（瀏覽器不編譯）" class="headerlink" title="評論（瀏覽器不編譯）"></a>評論（瀏覽器不編譯）</h3><p>單行評論</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 我的筆記</span><br></pre></td></tr></table></figure>
-
-<p>多行評論</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/* 我的筆記</span><br><span class="line">真的好多</span><br><span class="line">一行寫不完 */</span><br></pre></td></tr></table></figure>
-
-<h3 id="Javascript的資料類型"><a href="#Javascript的資料類型" class="headerlink" title="Javascript的資料類型"></a>Javascript的資料類型</h3><p>對電腦來說，「資料」是唯一有意義的輸入跟輸出。</p>
-<p>基本分類就是資料類型，如下：</p>
-<p>(1) undefined<br>(2) null<br>(3) boolean 布林值<br>(4) string 字串<br>(5) symbol 符號<br>(6) bigint<br>(7) number 數字<br>(8) object 物件</p>
-<p>面對不一樣的資料類型，電腦會有不一樣的解讀方式。</p>
-<p>這時候要講到一個重要的容器，叫做variables變數。</p>
-<p>電腦取用資料：很多教材都使用「指向」這個動作說明變數跟資料間的互動。</p>
-<p>不過我擅自把他比喻成更具象化的概念。<br>你要喝水，你會拿個瓶子去飲水機奘，或用手裝，這個瓶子＝容器就是「變數」的概念。同樣都是液體，有飲料，有蒸餾水，有農藥，你要拿不同的瓶子裝，電腦才能識別出來：他們都是液體，但是是不同的液體。接著又必須讓每個容器有代號，比如說老白的燒瓶，小粉的有了變數這個容器，資料就可以執行很多程序，達到各種類型的目標。</p>
-<p>而且變數這個容器很高級（？），他不像數學的x跟y只能塞數字，他可以同時存放各種資料。</p>
-<p>先直接看看怎麼宣告一個變數：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var theirRV;</span><br></pre></td></tr></table></figure>
-<p>＊＊變數命名規則：可以為任何字母&#x2F;數字&#x2F;$&#x2F;_，但不可以數字為開頭，不能含有空白space。結尾須加;代表結束。</p>
-<h3 id="如何塞資料到變數中？"><a href="#如何塞資料到變數中？" class="headerlink" title="如何塞資料到變數中？"></a>如何塞資料到變數中？</h3><p>目標：塞資料到「變數」這個容器中</p>
-<p>必須講到『運算子』。（之後會另分一類文章討論運算子。）</p>
-<p>@@ 指派運算子（ Assigment Operator)</p>
-<p>指派運算子長這樣：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=</span><br></pre></td></tr></table></figure>
-<p>乍看很像數學的『等於』，但他有另外的意思。指派：把某個值value裝到某個變數中&#x2F; 對應到某個變數的動作。</p>
-<p>實例：我要把數字20裝到剛剛提到的變數theirRV中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var theirRV = 20;</span><br></pre></td></tr></table></figure>
-<p>這個時候用貼標籤的方式比較好理解，就是老白今天有個黑色行李箱，地勤幫他貼上一個theirRV的標籤。要是老白之後要領這個黑色行李箱，他只要跟地勤說我要領theirRV，地勤就知道要拿什麼給他了。</p>
-<p>融合剛剛學到資料類型的概念，上面這一行代表的就是：我把一個值為20的number類型指派給叫做theirRV的變數。</p>
-<p>指派運算子除了可以把值value指派給variable變數外，也可以將一個變數指派給另一個變數：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var theirRV;</span><br><span class="line">theirRV = 20;</span><br><span class="line">var blue;</span><br><span class="line">blue = theirRV;</span><br></pre></td></tr></table></figure>
-
-<p>這時候blue的值就會是20。</p>
-<p>值為字串的變數：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var breakingBad = <span class="string">&quot;Midlife Crisis&quot;</span>;</span><br></pre></td></tr></table></figure>
-<p>var的初始值是undefined。<br>如果將一個未宣告的變數與已宣告的變數（number)做數字運算，會回傳NaN（aka. Not a Number）。<br>如果將一個未宣告的變數與已宣告的變數（string)相連，則會回傳undefined。</p>
-<h3 id="書寫格式注意："><a href="#書寫格式注意：" class="headerlink" title="書寫格式注意："></a>書寫格式注意：</h3><p>＊＊Camel Case 駝峰式命名法</p>
-<p>可以回頭觀察我上面命名的例子，是否都有共通點呢？</p>
-<p>沒錯，我皆使用了小寫駝峰式lower camel case。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var breakingBad;</span><br><span class="line">var betterCallSaul;</span><br><span class="line">var iLikedItAndIWasGoodAtIt;</span><br></pre></td></tr></table></figure>
-<p>與大寫駝峰式upper camel case的差別僅在第一個單字：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var BreakingBad;</span><br><span class="line">var BetterCallSaul;</span><br><span class="line">var ILikedItAndIWasGoodAtIt;</span><br></pre></td></tr></table></figure>
-<p>目前我吸收的教材大部分皆使用lower camel case，有其他想法歡迎交流。</p>
-<h3 id="檢查輸出"><a href="#檢查輸出" class="headerlink" title="檢查輸出"></a>檢查輸出</h3><p>目前我如果你想要確定變數跟值之間有沒有運作正常，請console.log即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var theirRV;</span><br><span class="line">theirRV = 20;</span><br><span class="line"></span><br><span class="line">console.log (theirRV);</span><br><span class="line">// 輸出值為20</span><br></pre></td></tr></table></figure>
-
-<p>下一篇: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">變數的宣告方式</a></p>
-
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-    
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/hexo-Facina/page/2/">2</a><a class="extend next" rel="next" href="/hexo-Facina/page/2/">Next</a>
+  </nav>
 
 </section>
           <aside id="sidebar">
@@ -1111,6 +1103,18 @@ var themeMenus = {};
               <div class="widget-entry-summary" style="margin: 0;">
             
 
+              <h6 style="margin: 0;"><a href="/hexo-Facina/2022/09/30/2022-09-30-loop/">Loop迴圈與Recursion遞迴</a></h6>
+              <span>九月 30, 2022</span>
+            </div>
+
+          </li>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
               <h6 style="margin: 0;"><a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/">Object物件</a></h6>
               <span>九月 29, 2022</span>
             </div>
@@ -1165,18 +1169,6 @@ var themeMenus = {};
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/hexo-Facina/2022/09/23/2022-09-23-css-float/">CSS Float排版</a></h6>
-              <span>九月 23, 2022</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -1189,7 +1181,7 @@ var themeMenus = {};
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a><span class="tag-list-count">10</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/CSS/" rel="tag">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93%E7%AD%86%E8%A8%98/" rel="tag">前端技術筆記</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo-Facina/tags/%E7%B6%B2%E9%A0%81%E8%A8%AD%E8%A8%88/" rel="tag">網頁設計</a><span class="tag-list-count">11</span></li></ul>
     </div>
   </div>
 
@@ -1209,7 +1201,7 @@ var themeMenus = {};
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-Facina/archives/2022/09/">九月 2022</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo-Facina/archives/2022/09/">九月 2022</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
