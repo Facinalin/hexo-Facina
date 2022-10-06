@@ -34,7 +34,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://i.imgur.com/3kmbWhN.png">
 <meta property="article:published_time" content="2022-09-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-28T12:58:19.598Z">
+<meta property="article:modified_time" content="2022-10-06T13:10:29.921Z">
 <meta property="article:author" content="Facina Lin">
 <meta property="article:tag" content="前端技術筆記">
 <meta property="article:tag" content="網頁設計">
@@ -98,8 +98,6 @@ var themeMenus = {};
 
   themeMenus["/hexo-Facina/categories"] = "Categories"; 
 
-  themeMenus["/hexo-Facina/tags"] = "Tags"; 
-
   themeMenus["/hexo-Facina/about"] = "About"; 
 
 </script>
@@ -132,8 +130,6 @@ var themeMenus = {};
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/archives">Archives</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/tags">Tags</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/about">About</a> </li>
                     
@@ -237,6 +233,9 @@ var themeMenus = {};
 <p>反引號 backtick(&#96;&#96;)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(`string text line 1 </span><br><span class="line">string text line 2`);</span><br><span class="line"></span><br><span class="line">輸出以下結果&gt;&gt;</span><br><span class="line">// <span class="string">&quot;string text line 1</span></span><br><span class="line"><span class="string">// string text line 2&quot;</span></span><br></pre></td></tr></table></figure>
 <p>非常方便！</p>
+<p>字串加上變數的組合技也非常實用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> myName = <span class="string">&quot;Andrea&quot;</span>;</span><br><span class="line"><span class="built_in">let</span> content = `Hello, my name is <span class="variable">$&#123;myName&#125;</span>.`;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">輸出以下結果&gt;&gt;</span><br><span class="line">// <span class="string">&quot;Hello, my name is Andrea.&quot;</span></span><br></pre></td></tr></table></figure>
+
 <p>＊＊反引號鍵盤：mac（option + 數字1左邊那個有～符號的按鈕）</p>
 <p>》&gt; 》更多 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals">樣板字面值MDN Web Docs</a></p>
 <p>接下來回到各種字串相連的方式。</p>
@@ -248,8 +247,13 @@ var themeMenus = {};
 <p>或以下相加兩個變數的方式也可以：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const myName = <span class="string">&quot; and I am well!&quot;</span>;</span><br><span class="line">const myStr = <span class="string">&quot;My name is Leeknow&quot;</span>;</span><br><span class="line">myStr += myName;</span><br><span class="line"></span><br><span class="line">myStr輸出以下結果&gt;&gt;</span><br><span class="line">// My name is Leeknow and I am well!</span><br></pre></td></tr></table></figure>
 <h3 id="輸出字串長度-length"><a href="#輸出字串長度-length" class="headerlink" title="輸出字串長度 .length"></a>輸出字串長度 .length</h3><p>現在我想知道字串的長度（aka.字元的數目），我可以這麼寫：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> strLength = 0;</span><br><span class="line">const herStr = <span class="string">&quot;abcdEFgh&quot;</span>;</span><br><span class="line">strLength = herStr.length</span><br><span class="line"></span><br><span class="line">輸出strLength得以下結果&gt;&gt;</span><br><span class="line">// 8</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> strLength = 0;</span><br><span class="line">const herStr = <span class="string">&quot;abcdEFgh&quot;</span>;</span><br><span class="line">const hisStr = <span class="string">&quot; bcdEFg &quot;</span>;</span><br><span class="line">strLength = herStr.length</span><br><span class="line"></span><br><span class="line">輸出strLength得以下結果&gt;&gt;</span><br><span class="line">// 8</span><br></pre></td></tr></table></figure>
 
+<p>herStr跟hisStr的length都是一樣的喔。</p>
+<p>如果想要濾掉頭跟尾的空白字元，可以使用.trim()方法，示範如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> hisStr = <span class="string">&quot; bcdEFg &quot;</span>;</span><br><span class="line"></span><br><span class="line">console.log(hisStr.trim());</span><br><span class="line">//回傳<span class="string">&quot;bcdEFg&quot;</span></span><br></pre></td></tr></table></figure>
+<p>＊＊實用時機：使用者輸入email address時誤觸空白鍵，資料在傳過去給後端之前要trim個。</p>
+<p>如果想要濾掉整條字串裡的所有的空白字元，可以使用.split()方法，示範如下：</p>
 <p>》&gt; 》更多 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-tw/dotnet/api/system.string.length?view=net-6.0">String.Length 屬性MDN Web Docs</a></p>
 <h2 id="索引字串的第幾個字元"><a href="#索引字串的第幾個字元" class="headerlink" title="索引字串的第幾個字元 [ ]"></a>索引字串的第幾個字元 [ ]</h2><p>現在我想知道字串的第幾個字元是什麼字母，我可以這麼寫：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> bracket = <span class="string">&quot;Jimmy McGill&quot;</span>;</span><br><span class="line">const firstletter = bracket[0];</span><br><span class="line"></span><br><span class="line">輸出firstletter得以下結果&gt;&gt;</span><br><span class="line">// <span class="string">&quot;J&quot;</span></span><br></pre></td></tr></table></figure>
@@ -269,6 +273,15 @@ var themeMenus = {};
 <h2 id="undefined不是字串"><a href="#undefined不是字串" class="headerlink" title="undefined不是字串"></a>undefined不是字串</h2><p>要回傳undefined不用加上””符號，他本身是keyword保留關鍵字，不是string。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> abc(a,b)&#123;</span><br><span class="line">   <span class="keyword">if</span>(a&lt;0||b&lt;0)&#123;</span><br><span class="line">   <span class="built_in">return</span> undefined;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">   <span class="built_in">return</span> a+b;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="parseInt-將字串轉成整數"><a href="#parseInt-將字串轉成整數" class="headerlink" title="parseInt()將字串轉成整數"></a>parseInt()將字串轉成整數</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> age2 = parseInt(<span class="string">&quot;20&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 純數字內容的字串的話回傳20</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> name = parseInt(<span class="string">&quot;Jerry&quot;</span>);</span><br><span class="line"></span><br><span class="line">// 硬是將不能轉成數字概念的內容轉成數字的話則回傳NaN;</span><br></pre></td></tr></table></figure>
+<p>**NaN也是Number型別</p>
+<p>使用時機：表單輸入的數字資料都是字串，我們要幫使用者轉型成數字給js處理。</p>
+<h2 id="split-字串分割"><a href="#split-字串分割" class="headerlink" title="split()字串分割"></a>split()字串分割</h2><p>拆分以『字元』為單位，寫法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> myStr = <span class="string">&#x27;Riding on my highway to heaven&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chars = myStr.<span class="built_in">split</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">console.log(chars[7]);</span><br><span class="line">// 回傳<span class="string">&#x27;o&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>拆分以『單字』為單位，寫法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> myStr = <span class="string">&#x27;Riding on my highway to heaven&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> words = myStr.<span class="built_in">split</span>(<span class="string">&#x27; &#x27;</span>); //去掉空白，類似陣列的index方法</span><br><span class="line"></span><br><span class="line">console.log(words[3]);</span><br><span class="line">// 回傳<span class="string">&#x27;highway&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>通過這個方法得到的變數，type of 會發現是物件型別。</p>
 <p>¶ 資料來源：<br>  （1）圖一：free code camp tutorial (Basic Javascript)</p>
 
       
@@ -353,7 +366,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%AB%E9%80%B8%E5%AD%97%E9%9D%A2-Escape-Literal"><span class="nav-number">1.</span> <span class="nav-text">脫逸字面 Escape Literal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83-Escape-Sequence"><span class="nav-number">2.</span> <span class="nav-text">跳脫字元 Escape Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Template-Literal"><span class="nav-number">3.</span> <span class="nav-text">樣板字面值 Template Literal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BC%B8%E5%87%BA%E5%AD%97%E4%B8%B2%E9%95%B7%E5%BA%A6-length"><span class="nav-number">4.</span> <span class="nav-text">輸出字串長度 .length</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%AD%97%E4%B8%B2%E7%9A%84%E7%AC%AC%E5%B9%BE%E5%80%8B%E5%AD%97%E5%85%83"><span class="nav-number"></span> <span class="nav-text">索引字串的第幾個字元 [ ]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E6%8C%87%E6%B4%BE%E5%AD%97%E4%B8%B2%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">重新指派字串值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined%E4%B8%8D%E6%98%AF%E5%AD%97%E4%B8%B2"><span class="nav-number"></span> <span class="nav-text">undefined不是字串</span></a>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%AB%E9%80%B8%E5%AD%97%E9%9D%A2-Escape-Literal"><span class="nav-number">1.</span> <span class="nav-text">脫逸字面 Escape Literal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83-Escape-Sequence"><span class="nav-number">2.</span> <span class="nav-text">跳脫字元 Escape Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Template-Literal"><span class="nav-number">3.</span> <span class="nav-text">樣板字面值 Template Literal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BC%B8%E5%87%BA%E5%AD%97%E4%B8%B2%E9%95%B7%E5%BA%A6-length"><span class="nav-number">4.</span> <span class="nav-text">輸出字串長度 .length</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%AD%97%E4%B8%B2%E7%9A%84%E7%AC%AC%E5%B9%BE%E5%80%8B%E5%AD%97%E5%85%83"><span class="nav-number"></span> <span class="nav-text">索引字串的第幾個字元 [ ]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E6%8C%87%E6%B4%BE%E5%AD%97%E4%B8%B2%E5%80%BC"><span class="nav-number"></span> <span class="nav-text">重新指派字串值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined%E4%B8%8D%E6%98%AF%E5%AD%97%E4%B8%B2"><span class="nav-number"></span> <span class="nav-text">undefined不是字串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parseInt-%E5%B0%87%E5%AD%97%E4%B8%B2%E8%BD%89%E6%88%90%E6%95%B4%E6%95%B8"><span class="nav-number"></span> <span class="nav-text">parseInt()將字串轉成整數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split-%E5%AD%97%E4%B8%B2%E5%88%86%E5%89%B2"><span class="nav-number"></span> <span class="nav-text">split()字串分割</span></a>
     
     </div>
   </aside>
@@ -400,8 +413,6 @@ var a = new Donate({
     <a href="/hexo-Facina/archives" class="mobile-nav-link">Archives</a>
   
     <a href="/hexo-Facina/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/hexo-Facina/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/hexo-Facina/about" class="mobile-nav-link">About</a>
   

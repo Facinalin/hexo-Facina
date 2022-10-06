@@ -33,7 +33,7 @@
 <meta property="og:description" content="Javascript基礎中的基礎寫法我想要加總兩個變數的數字，該怎麼做？ 1const nailSalon &#x3D; 5 + 10; 回傳結果為15。 以下為運算子列表： (1)算數運算子（Arithmetic Operator）+ 相加 add- 相減 subtract* 相乘 multiply&#x2F; 相除 divide% 取餘數 remainder ++ 增量 increment（加一）-- 減量 de">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-09-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-28T09:14:03.814Z">
+<meta property="article:modified_time" content="2022-10-06T13:10:19.682Z">
 <meta property="article:author" content="Facina Lin">
 <meta property="article:tag" content="前端技術筆記">
 <meta property="article:tag" content="網頁設計">
@@ -96,8 +96,6 @@ var themeMenus = {};
 
   themeMenus["/hexo-Facina/categories"] = "Categories"; 
 
-  themeMenus["/hexo-Facina/tags"] = "Tags"; 
-
   themeMenus["/hexo-Facina/about"] = "About"; 
 
 </script>
@@ -130,8 +128,6 @@ var themeMenus = {};
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/archives">Archives</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/tags">Tags</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/about">About</a> </li>
                     
@@ -230,7 +226,7 @@ var themeMenus = {};
 
 <p>** 若計算的值為小數，因為有限精度Finite Precision的關係，數值有可能與你在計算機上按的不同。（剛剛以5.7*4.3計算才發現這個結果。）</p>
 <p>對於浮點精度有興趣的話，另外整理一篇文章給大家。</p>
-<h3 id="2-指派運算子（Arithmetic-Operator）aka-賦值運算子"><a href="#2-指派運算子（Arithmetic-Operator）aka-賦值運算子" class="headerlink" title="(2)指派運算子（Arithmetic Operator）aka 賦值運算子"></a>(2)指派運算子（Arithmetic Operator）aka 賦值運算子</h3><p>指派運算子的特性如變數文章談過，將等號右邊的值指派給左邊的變數。很明顯的，電腦的順序即是先執行等號右邊的運算。</p>
+<h3 id="2-指派運算子（Arithmetic-Operator）"><a href="#2-指派運算子（Arithmetic-Operator）" class="headerlink" title="(2)指派運算子（Arithmetic Operator）"></a>(2)指派運算子（Arithmetic Operator）</h3><p>指派運算子的特性如變數文章談過，將等號右邊的值指派給左邊的變數。很明顯的，電腦的順序即是先執行等號右邊的運算。</p>
 <p>所以你會看到如下面的運算，（以以前數學老師教的來看，根本錯得離譜的算式。）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dogHouse = dogHouse + 5;</span><br></pre></td></tr></table></figure>
 
@@ -264,8 +260,11 @@ var themeMenus = {};
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (num &gt; 3) &#123;</span><br><span class="line">  <span class="keyword">if</span> (num &lt; 15) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="string">&quot;Yes&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> <span class="string">&quot;No&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (num &gt; 3 &amp;&amp; num &lt; 15)  &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="string">&quot;Yes&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">return</span> <span class="string">&quot;No&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他運算子TBC"><a href="#其他運算子TBC" class="headerlink" title="其他運算子TBC"></a>其他運算子TBC</h2><p>》&gt; 》附上文件連結 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">運算子MDN Web Docs</a></p>
+<h3 id="5-三元運算子（Ternary-Operator）-二分法回傳字串的最佳解！"><a href="#5-三元運算子（Ternary-Operator）-二分法回傳字串的最佳解！" class="headerlink" title="(5)三元運算子（Ternary Operator）- 二分法回傳字串的最佳解！"></a>(5)三元運算子（Ternary Operator）- 二分法回傳字串的最佳解！</h3><p>經典的判斷奇偶數例子：（比起if&#x2F;else statement精簡許多）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> even_or_odd(number) &#123;</span><br><span class="line">  <span class="built_in">return</span> number % 2 ? <span class="string">&quot;Odd&quot;</span> : <span class="string">&quot;Even&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不過網路上也有大神說明，不是所有二分法的問題都用三元運算子最好。他建議只用在，判斷完條件後回傳值的用法。如果是判斷完條件要執行不同動作，使用if else即可。此外，如果是三分以上的條件判斷，還是乖乖的用if else不要把三元運算子又包到另一個三元運算子中（雖然這樣也跑得動，readability會變很差）。</p>
+<h3 id="6-運算子"><a href="#6-運算子" class="headerlink" title="(6)運算子"></a>(6)運算子</h3><hr>
+<p>》&gt; 》附上文件連結 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators">運算子MDN Web Docs</a></p>
 <p>》&gt; 》附上文件連結 <a target="_blank" rel="noopener" href="https://faculty.math.illinois.edu/~hirani/cbmg/precision.html">浮點精度Finite Precision Arithmetic</a></p>
 
       
@@ -350,7 +349,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Javascript%E5%9F%BA%E7%A4%8E%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A4%8E%E5%AF%AB%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Javascript基礎中的基礎寫法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%97%E6%95%B8%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Arithmetic-Operator%EF%BC%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">(1)算數運算子（Arithmetic Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%87%E6%B4%BE%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Arithmetic-Operator%EF%BC%89aka-%E8%B3%A6%E5%80%BC%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">1.0.2.</span> <span class="nav-text">(2)指派運算子（Arithmetic Operator）aka 賦值運算子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Logical-Operator%EF%BC%89"><span class="nav-number">1.0.3.</span> <span class="nav-text">(3)邏輯運算子（Logical Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Comparison-Operator%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">(4)比較運算子（Comparison Operator）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%81%8B%E7%AE%97%E5%AD%90TBC"><span class="nav-number">1.1.</span> <span class="nav-text">其他運算子TBC</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Javascript%E5%9F%BA%E7%A4%8E%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A4%8E%E5%AF%AB%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Javascript基礎中的基礎寫法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%97%E6%95%B8%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Arithmetic-Operator%EF%BC%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">(1)算數運算子（Arithmetic Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8C%87%E6%B4%BE%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Arithmetic-Operator%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">(2)指派運算子（Arithmetic Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%82%8F%E8%BC%AF%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Logical-Operator%EF%BC%89"><span class="nav-number">1.0.3.</span> <span class="nav-text">(3)邏輯運算子（Logical Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%AF%94%E8%BC%83%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Comparison-Operator%EF%BC%89"><span class="nav-number">1.0.4.</span> <span class="nav-text">(4)比較運算子（Comparison Operator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E4%B8%89%E5%85%83%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Ternary-Operator%EF%BC%89-%E4%BA%8C%E5%88%86%E6%B3%95%E5%9B%9E%E5%82%B3%E5%AD%97%E4%B8%B2%E7%9A%84%E6%9C%80%E4%BD%B3%E8%A7%A3%EF%BC%81"><span class="nav-number">1.0.5.</span> <span class="nav-text">(5)三元運算子（Ternary Operator）- 二分法回傳字串的最佳解！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E9%81%8B%E7%AE%97%E5%AD%90"><span class="nav-number">1.0.6.</span> <span class="nav-text">(6)運算子</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
@@ -397,8 +396,6 @@ var a = new Donate({
     <a href="/hexo-Facina/archives" class="mobile-nav-link">Archives</a>
   
     <a href="/hexo-Facina/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/hexo-Facina/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/hexo-Facina/about" class="mobile-nav-link">About</a>
   

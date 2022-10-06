@@ -33,7 +33,7 @@
 <meta property="og:description" content="Loop迴圈：工業化的好幫手同一個函式，讓電腦重複執行，便是迴圈。 While迴圈目標：我想要創造一個陣列變數myArray，長這樣[5, 4, 3, 2, 1, 0]，但我不想要一個一個手打。 這時候就可以利用一個基本款的while迴圈來協助： 123456789const myArray &#x3D; [];let i &#x3D; 5;while (i &gt; -1)&amp;#123;  myArray.push(">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-09-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-30T08:58:50.649Z">
+<meta property="article:modified_time" content="2022-10-06T13:10:29.919Z">
 <meta property="article:author" content="Facina Lin">
 <meta property="article:tag" content="Javascript">
 <meta property="article:tag" content="前端技術筆記">
@@ -97,8 +97,6 @@ var themeMenus = {};
 
   themeMenus["/hexo-Facina/categories"] = "Categories"; 
 
-  themeMenus["/hexo-Facina/tags"] = "Tags"; 
-
   themeMenus["/hexo-Facina/about"] = "About"; 
 
 </script>
@@ -131,8 +129,6 @@ var themeMenus = {};
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/archives">Archives</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/categories">Categories</a> </li>
-                    
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/tags">Tags</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/hexo-Facina/about">About</a> </li>
                     
@@ -220,7 +216,7 @@ var themeMenus = {};
 <p>「因為孤獨的總和，讓我們相互依偎著＿＿」不是，現在我們要求的不是孤獨的總和，是陣列的總和。</p>
 <p>直接上一個for迴圈：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const myArr = [2, 3, 4, 5, 6];</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> total = 0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i=0; i&lt;myArr.length;i++)&#123;</span><br><span class="line">  total += myArr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>老實說total +&#x3D; myArr[i];這句真的滿不白話的，理解了好一下子。後來想到畫面了，第一次total執行完取值之後，total這個變數的值來到了2，因為跳下一個索引仍然未超出迴圈範圍，故陣列再次執行，這時候total已經是2，再加上遇到新來的3，total現在又來到了5。故最後total會來到陣列的總和。</p>
+<p>&#x2F;&#x2F;老實說total +&#x3D; myArr[i];這句真的滿不白話的，理解了好一下子。後來想到畫面了，第一次total執行完取值之後，total這個變數的值來到了2，因為跳下一個索引仍然未超出迴圈範圍，故陣列再次執行，這時候total已經是2，再加上遇到新來的3，total現在又來到了5。故最後total會來到陣列的總和。&#x2F;&#x2F;</p>
 <p>也有看到有人倒回來寫。恩，如果你有空的話。</p>
 <p>多層陣列的總和，使用for迴圈：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const arr = [</span><br><span class="line">  [1, 2], [3, 4], [5, 6]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> j = 0; j &lt; arr[i].length; j++) &#123;</span><br><span class="line">    console.log(arr[i][j]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -237,9 +233,26 @@ var themeMenus = {};
 <p>接著，除了base case情況以外的情況會寫進else中。else的終點就是base case。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">co</span><br></pre></td></tr></table></figure>
 
+<h3 id="高階函數"><a href="#高階函數" class="headerlink" title="高階函數"></a>高階函數</h3><p>高階函數是什麼？</p>
+<p>將一個function作為參數傳入，或者，輸出的是一個function的function，就是高階函數。（再多念幾遍這繞口令）總之當一個function裡包了一個已經寫好的function，想當然爾更有效率更加方便。（當然要注意使用時機）</p>
+<p>Array的高階函數有：forEach, map, filter, （前三熱門）, reduce, some, every。</p>
+<p>(1)forEach()</p>
+<p>for each 英文本身的字面意思便是：『每一個都』。</p>
+<p>目標：將一個叫做numbers的陣列總和：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">sum</span> (numbers) &#123;</span><br><span class="line">      <span class="built_in">let</span> result = 0;</span><br><span class="line">      numbers.forEach(item =&gt; result +=item);</span><br><span class="line"></span><br><span class="line">      //偽翻譯一下：資料.其中的每一項(都要執行的<span class="keyword">function</span>);</span><br><span class="line">    <span class="built_in">return</span> result; </span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果僅用for迴圈來撰寫，需要界定停止範圍（邊界），且須透過一次又一次重複的index先取值。<br>forEach()的話，每個元素item都會執行同個函數。等於電腦從只能理解，第一個，第二個，到可以理解「每個」的含義去操作資料，非常方便。</p>
+<p>(2)map()</p>
+<p>TBC</p>
+<p>(3)filter()</p>
+<p>TBC</p>
+<p>(4)reduce()</p>
+<p>目標：將一個叫做numbers的陣列總和：（可對照forEach寫法）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="built_in">sum</span> (numbers) &#123;</span><br><span class="line">      <span class="built_in">return</span> numbers.reduce((a,b)=&gt; a+b, 0);</span><br></pre></td></tr></table></figure>
 
 <p>¶ 資料來源：</p>
 <p>(1)Recursion遞迴：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10289379?sc=iThelpR">Day 11 Type Conversion與Type Coercion</a></p>
+<p>(2)高階函數：<a target="_blank" rel="noopener" href="https://realdennis.medium.com/array-%E5%8E%9F%E5%9E%8B%E7%9A%84-foreach-%E6%9C%89%E5%A4%9A%E5%A5%BD%E7%94%A8-%E5%AD%B8%E6%9C%83%E9%AB%98%E9%9A%8E%E5%87%BD%E6%95%B8%E4%B9%8B%E5%BE%8C%E9%83%BD%E4%B8%8D%E6%83%B3%E5%AF%AB-javascript-%E4%BB%A5%E5%A4%96%E7%9A%84%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E4%BA%86-dc4b594a045a">Array 原型的 forEach 有多好用？ 學會高階函數之後都不想寫 JavaScript 以外的程式語言了</a></p>
 
       
     </div>
@@ -297,6 +310,15 @@ var a = new Donate({
     
 <nav id="article-nav">
   
+    <a href="/hexo-Facina/2022/10/01/2022-10-01-number/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Number數字
+        
+      </div>
+    </a>
+  
   
     <a href="/hexo-Facina/2022/09/29/2022-09-29-Object%E6%8B%B7%E8%B2%9D/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -314,7 +336,7 @@ var a = new Donate({
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Loop%E8%BF%B4%E5%9C%88%EF%BC%9A%E5%B7%A5%E6%A5%AD%E5%8C%96%E7%9A%84%E5%A5%BD%E5%B9%AB%E6%89%8B"><span class="nav-number">1.</span> <span class="nav-text">Loop迴圈：工業化的好幫手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#While%E8%BF%B4%E5%9C%88"><span class="nav-number">1.1.</span> <span class="nav-text">While迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#For%E8%BF%B4%E5%9C%88"><span class="nav-number">1.2.</span> <span class="nav-text">For迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Do-While%E8%BF%B4%E5%9C%88"><span class="nav-number">1.3.</span> <span class="nav-text">Do While迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursion%E9%81%9E%E8%BF%B4"><span class="nav-number">1.4.</span> <span class="nav-text">Recursion遞迴</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Loop%E8%BF%B4%E5%9C%88%EF%BC%9A%E5%B7%A5%E6%A5%AD%E5%8C%96%E7%9A%84%E5%A5%BD%E5%B9%AB%E6%89%8B"><span class="nav-number">1.</span> <span class="nav-text">Loop迴圈：工業化的好幫手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#While%E8%BF%B4%E5%9C%88"><span class="nav-number">1.1.</span> <span class="nav-text">While迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#For%E8%BF%B4%E5%9C%88"><span class="nav-number">1.2.</span> <span class="nav-text">For迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Do-While%E8%BF%B4%E5%9C%88"><span class="nav-number">1.3.</span> <span class="nav-text">Do While迴圈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recursion%E9%81%9E%E8%BF%B4"><span class="nav-number">1.4.</span> <span class="nav-text">Recursion遞迴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%9A%8E%E5%87%BD%E6%95%B8"><span class="nav-number">1.5.</span> <span class="nav-text">高階函數</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -361,8 +383,6 @@ var a = new Donate({
     <a href="/hexo-Facina/archives" class="mobile-nav-link">Archives</a>
   
     <a href="/hexo-Facina/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/hexo-Facina/tags" class="mobile-nav-link">Tags</a>
   
     <a href="/hexo-Facina/about" class="mobile-nav-link">About</a>
   
